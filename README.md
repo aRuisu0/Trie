@@ -58,4 +58,10 @@ The recursive helper function for autocomplete takes in the node root and desire
 4. Prints out string
 5. Pops off values after prefix
 
-### Print
+### DOT File
+
+The last two functions of the program are used to produce a text file that can than be easily converted into DOT language for a DOT file or directly output the file into DOT file format (depending on the software used). The intial print function that is called creates an output stream that takes in a file name and produces the total format for the entire graph.
+
+Then it calls the recursive print function that will connect all nodes with in the trie by printing out the respective node names and connector symbols for the DOT language to produce a visual diagram, such sa the one below.
+
+
