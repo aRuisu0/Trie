@@ -208,8 +208,6 @@ void Trie::auto_comp_recur(Node* root, std::string prefx){
 
 
 
-
-
 //Function called to print DOT language to output file
 void Trie:: print(std::string file_name, Node* root){
     output_file.open(file_name);
@@ -223,7 +221,7 @@ void Trie:: print(std::string file_name, Node* root){
 }
 
 void Trie::print_rec(Node* root, int& count){
-    //Iteratively traverse through the nodes 
+    //Iteratively traverse through the nodes
     for(int i = 0; i < CHAR_SIZE; i++){
         //Check for children
         if(haveChildren(root)){
@@ -239,21 +237,15 @@ void Trie::print_rec(Node* root, int& count){
         print_rec(root->character[i + 1], count);
 
 
-    //Alternate solution test
-    if (root->isLeaf) {
+    // //Alternate solution test
+    // if (root->isLeaf) {
+
+    // }
+
+    // if (!haveChildren(root)) {
+    //     return;
+    // }
 
     }
-
-    if (!haveChildren(root)) {
-        return;
-    }
-
-
-
-    //std::cout << root->data std::endl;
-
-
-
-
 }
 
