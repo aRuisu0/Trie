@@ -1,17 +1,17 @@
 # Trie - Final Project
 ## 1. Introduction
 ### Trie
- Tries are a special implementation of a search tree, or tree data structure and can be used to efficently search through large data files of string sets.
-  The goal of this project was to show that our group was able to comptently, research, implement and present a new data structure on our own.
+ Tries are a special implementation of a search tree, or tree data structure and can be used to efficiently search through large data files of string sets.
+  The goal of this project was to show that our group was able to competently, research, implement and present a new data structure on our own.
   
   
   <img src="trie.png" width="500"/>
 
  ## 2. Trie Operations
- All functions and operations within the trie class are all based off of a single blank root node where all unique characters following in the data set are subseqently connected to form individual paths of strings.
+ All functions and operations within the trie class are all based off of a single blank root node where all unique characters following in the data set are subsequently connected to form individual paths of strings.
    
 ### Input
-When compiling in `C++` the GCC compiler will may produce four warnings. These warnings are for the character array that is an attribute to the `Node` class letting the user know that the compilier does not want to receive a negative index in the array. However there is no need to worry about this as the code will not provide a negative index.
+When compiling in `C++` the GCC compiler may produce four warnings. These warnings are for the character array that is an attribute to the `Node` class letting the user know that the compiler does not want to receive a negative index in the array. However there is no need to worry about this as the code will not provide a negative index.
 
 The compile statement used in CS50 will be:
 
@@ -29,7 +29,7 @@ The readfile function can be called after construction where the data contents o
 
 ### Insert
 
-After calling the constructor, the insert function then ensures that the character value is being inserted into the correct spot in the trie. As the trie is completed, the data in each node is stored in a top-down manner with branch representing a string. This is done by:
+After calling the constructor, the insert function then ensures that the character value is being inserted into the correct spot in the trie. As the trie is completed, the data in each node is stored in a top-down manner with individual branches representing a string. This is done by:
 
 1. We start at a blank node for the root of the trie
 2. If the child node does not already exist create a new node of the data
@@ -54,9 +54,9 @@ Searching for a string in the trie is simply traversing the nodes for the desire
 
 Checks for child nodes.
 
-### Autocompleteion
+### Autocompletion
 
-To find possible autocompletions of a prefix in the trie two functions are used to do this. The fisrt function `auto_comp(...)` takes in the prefix the user is searching for and checks if it exists in the trie. Then it calls a recursive helper function to find the complete strings containing the prefix and present them.
+To find possible autocompletions of a prefix in the trie two functions are used to do this. The first function `auto_comp(...)` takes in the prefix the user is searching for and checks if it exists in the trie. Then it calls a recursive helper function to find the complete strings containing the prefix and present them.
 
 The recursive helper function for autocomplete takes in the node root and desired prefix as parameters and iteratively checks for words by:
 
@@ -68,9 +68,9 @@ The recursive helper function for autocomplete takes in the node root and desire
 
 ### DOT File
 
-The last two functions of the program are used to produce a text file that can than be easily converted into DOT language for a DOT file or directly output the file into DOT file format (depending on the software used). The intial print function that is called creates an output stream that takes in a file name and produces the total format for the entire graph.
+The last two functions of the program are used to produce a text file that can then be easily converted into DOT language for a DOT file or directly output the file into DOT file format (depending on the software used). The initial print function that is called creates an output stream that takes in a file name and produces the total format for the entire graph.
 
-Then it calls the recursive print function that will connect all nodes with in the trie by printing out the respective node names and connector symbols for the DOT language to produce a visual diagram, such sa the one below.
+Then it calls the recursive print function that will connect all nodes within the trie by printing out the respective node names and connector symbols for the DOT language to produce a visual diagram, such as the one below.
 
 
 <img src="graphviz.svg" width="600"/>
@@ -100,9 +100,9 @@ The expected output of the autocomplete function will produce terminal commands 
 
 ```text
 Looking for prefix <prefix>
-Found: <string in trie containg prefix>
-Found: <string in trie containg prefix>
-Found: <string in trie containg prefix>
+Found: <string in trie containing prefix>
+Found: <string in trie containing prefix>
+Found: <string in trie containing prefix>
 ```
 
-DOT file will be produced because of output stream from print functions.
+A DOT file will be produced because of the output stream from print functions.
