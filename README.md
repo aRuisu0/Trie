@@ -65,3 +65,4 @@ The last two functions of the program are used to produce a text file that can t
 Then it calls the recursive print function that will connect all nodes with in the trie by printing out the respective node names and connector symbols for the DOT language to produce a visual diagram, such sa the one below.
 
 
+<img src="graphviz.svg" width="600"/>
