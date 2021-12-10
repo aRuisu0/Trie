@@ -1,0 +1,57 @@
+digraph G {
+
+  subgraph cluster_0 {
+    style=filled;
+    color=lightgrey;
+    node [style=filled,color=white];
+    Y1 [label="y"]
+    E2 [label="E"]
+    I1 [label="I"]
+    L2 [label="L"]
+    E3 [label="E"]
+    N1 [label="N"]
+    S1 [label="S"]
+    H1 [label="H"]
+    A2 [label="A"]
+    T3 [label="T"]
+    H1 [label="H"]
+    E22 [label="E"]
+    I3 [label="I"]
+    S3 [label="S"]
+    O1 [label="O"]
+    R1 [label="R"]
+    I22 [label="I"]
+    E33 [label="E"]
+    S11 [label="S"]
+    E222 [label="E"]
+    E1 [label="E"]
+    I11 [label="I"]
+    L22 [label="L"]
+    L3 [label="L"]
+    O11 [label="O"]
+    R2 [label="R"]
+    D3 [label="D"]
+    R11 [label="R"]
+    I222 [label="I"]
+    T33 [label="T"]
+    E4 [label="E"]
+  }
+
+  start -> B -> Y1 -> E2;
+  start -> F -> I1 -> L2 -> E3;
+  start -> I -> N1;
+  I -> S1;
+  start -> T -> H1 -> A2 -> T3;
+  H1 -> E22;
+  H1 -> I3 -> S3;
+  T -> O1;
+  T -> R1 -> I22 -> E33;
+  start -> U -> S11 -> E222;
+  start -> W -> E1;
+  W -> I11 -> L22 -> L3;
+  W -> O11 -> R2 -> D3;
+  W -> R11 -> I222 -> T33 -> E4;
+
+
+  start [shape=Mdiamond];
+  //end [shape=Msquare];
