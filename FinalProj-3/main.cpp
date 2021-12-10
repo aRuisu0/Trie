@@ -8,8 +8,6 @@ int main(int argc, char**argv) {
 
     std::string fileName = argv[1];
 
-    // Input keys (use only 'a' through 'z'
-    // and lower case)
 
     //Trie* head = new Trie();
     
@@ -37,7 +35,7 @@ int main(int argc, char**argv) {
     
     std::string outFile = "dotfile.txt";
     
-    //t.print(outFile,t.root);
+    t.print(outFile,t.root);
     
     return 0;
 
