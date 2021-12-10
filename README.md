@@ -11,6 +11,13 @@
  All functions and operations within the trie class are all based off of a single blank root node where all unique characters following in the data set are subseqently connected to form individual paths of strings.
    
 ### Input
+When compiling in `C++` the GCC compiler will may produce four warnings. These warnings are for the character array that is an attribute to the `Node` class letting the user know that the compilier does not want to receive a negative index in the array. However there is no need to worry about this as the code will not provide a negative index.
+
+The compile statement used in CS50 will be:
+
+```text
+$ g++ -std=c++11 -Wall *.cpp -o output
+```
    
 The input for the program should take in a file in `.txt` format from command line arguments such as:
  ```text
@@ -41,6 +48,7 @@ Searching for a string in the trie is simply traversing the nodes for the desire
 4. If node does not exist return false
 5. If end of word is reached and node is leaf node, return true
 6. If end of word is reached and node is not leaf node, return false
+7. Output counter of words (greater than 1 means repeated word)
 
 ### Have Children
 
@@ -66,3 +74,35 @@ Then it calls the recursive print function that will connect all nodes with in t
 
 
 <img src="graphviz.svg" width="600"/>
+
+
+## 3. Output
+
+The expected output of the insert function will produce terminal commands that should look similar to:
+
+```text
+Adding <inserted word> to the trie. . . 
+Adding <inserted word> to the trie. . . 
+Adding <inserted word> to the trie. . . 
+Adding <inserted word> to the trie. . . 
+```
+
+The expected output of the search function will produce terminal commands that should look similar to:
+
+```text
+Searching for <word> within trie...
+<word count>: <number of times word is repeated in trie>
+Searching for <word> within trie...
+<word> was not found in trie
+```
+
+The expected output of the autocomplete function will produce terminal commands that should look similar to:
+
+```text
+Looking for prefix <prefix>
+Found: <string in trie containg prefix>
+Found: <string in trie containg prefix>
+Found: <string in trie containg prefix>
+```
+
+DOT file will be produced because of output stream from print functions.
