@@ -61,7 +61,7 @@ void Trie::insert(std::string data, Node* root) {
     Node* current = root;
     //std::cout<<(*curr)<<std::endl;
     // Loop to check each letter in the word to see if a child node of the key already exists
-    std::cout<< "Adding " << data << " to the trie. . . "<<std::endl;
+    std::cout<< "Adding " << data << " to the trie... "<<std::endl;
     for (unsigned int i = 0; i < data.length(); i++) {
 
 
@@ -102,7 +102,7 @@ bool Trie::search(std::string data, Node* root)
 
     //std::cout<<(*curr)<<std::endl;
 
-    std::cout<<"Searching for "<< data<< " within trie"<<std::endl;
+    std::cout<<"Searching for "<< data<< " within trie..."<<std::endl;
 
     for (unsigned int i = 0; i < data.length(); i++)
 
@@ -111,7 +111,7 @@ bool Trie::search(std::string data, Node* root)
         current = current->character[data[i]];
         // if the string is invalid, reaching the end of a path in the Trie
         if (current == nullptr) {
-            std::cout<<"Word was not found in trie"<<std::endl;
+            std::cout<< data <<" was not found in trie"<<std::endl;
             return false;
         }
     }
@@ -138,42 +138,42 @@ bool Trie::haveChildren(Node* root) {
 
 //Function to print out all words in trie, if found, containing the prefix passed into the parameter
 int Trie::auto_comp(std::string data, Node* root){
-    std::cout << "Looking for prefix 'un'" << std::endl;
+    std::cout << "Looking for prefix " <<"'" <<data <<"'"<< std::endl;
     Node* current = root;
-    
+
     //For loop to traverse through the string, data, passed into to check if each character is found in the trie
     for(unsigned int height = 0; height < data.length(); height++){
         //Used to indicate the "level" at which point the character is found in the trie
         int idx = data[height];
         //Conditional to check if the character at index level exists if not it's not in the trie
         if(!current->character[idx]){
-            std::cout<< "No words found for prefix"<<std::endl;
+            std::cout<< "No words found for prefix "<<"'" <<data <<"'"<<std::endl;
             return 0;
         }
-        
+
         //sets current to the character at index level
         current = current->character[idx];
     }
-    
+
     //boolean used to check if the node is the end of the word
     bool end_of_word = (current->isLeaf == true);
-    
+
     //boolean to check if the current node has a child
     bool child = haveChildren(current);
-    
-    //Conditional to check if the end of the prefix is the end of the word 
+
+    //Conditional to check if the end of the prefix is the end of the word
     //meaning no more words are found to match it
     if(end_of_word && !child){
         std::cout<< data << std::endl;
-        std::cout<< "No more words matching prefix"<< std::endl;
+        std::cout<< "No more words matching prefix "<< "'" <<data <<"'"<< std::endl;
         return -1;
     }
-    
+
     //Conditional to check if there is a child node and call recursive function
     if(child){
         std::string prefx = data;
         auto_comp_recur(current, prefx);
-        
+
         return 1;
     }
     //Code should never reach here
@@ -208,113 +208,52 @@ void Trie::auto_comp_recur(Node* root, std::string prefx){
 
 
 
-// // Recursive function to delete a key in the Trie
-// bool Trie::deletion( std::string data)
-// {
-//     // return if Trie is empty
-//     if (curr == nullptr) {
-//         return false;
-//     }
 
-//     // if the end of the key is not reached
-//     if (key.length())
-//     {
-//         // recur for the node corresponding to the next character in the key
-//         // and if it returns true, delete the current node (if it is non-leaf)
 
-//         if (curr != nullptr &&
-//             curr->character[key[0]] != nullptr &&
-//             deletion(curr->character[key[0]], key.substr(1)) &&
-//             curr->isLeaf == false)
-//         {
-//             if (!haveChildren(curr))
-//             {
-//                 delete curr;
-//                 curr = nullptr;
-//                 return true;
-//             }
-//             else {
-//                 return false;
-//             }
-//         }
-//     }
+//Function called to print DOT language to output file
+void Trie:: print(std::string file_name, Node* root){
+    output_file.open(file_name);
+    output_file << "graph {\n";
+    Node* curr = root;
+    int count = 0;
+    print_rec(curr, count);
+    output_file << "}";
+    output_file.close();
+    return;
+}
 
-//     // if the end of the key is reached
-//     if (key.length() == 0 && curr->isLeaf)
-//     {
-//         // if the current node is a leaf node and doesn't have any children
-//         if (!haveChildren(curr))
-//         {
-//             // delete the current node
-//             delete curr;
-//             curr = nullptr;
+void Trie::print_rec(Node* root, int& count){
+    //Iteratively traverse through the nodes 
+    for(int i = 0; i < CHAR_SIZE; i++){
+        //Check for children
+        if(haveChildren(root)){
+            continue;
+        }
+        //stroe letter to then output to a file connecting the nodes
+        std::string letter = root->data;
+        //std::cout << "asjdhkfasdlifajsdifahsdfhaksdf" <<std::endl;
+        output_file << letter <<count << " -- "<< root->character[i + 1]<<"[Label = \" " << letter<< " \"]";
+        //Increment counter for labeling
+        count++;
+        //recursive call
+        print_rec(root->character[i + 1], count);
 
-//             // delete the non-leaf parent nodes
-//             return true;
-//         }
 
-//         // if the current node is a leaf node and has children
-//         else {
-//             // mark the current node as a non-leaf node (DON'T DELETE IT)
-//             curr->isLeaf = false;
+    //Alternate solution test
+    if (root->isLeaf) {
 
-//             // don't delete its parent nodes
-//             return false;
-//         }
-//     }
+    }
 
-//     return false;
-// }
+    if (!haveChildren(root)) {
+        return;
+    }
 
 
 
-// void Trie:: print(std::string file_name, Node* root){
-//     output_file.open(file_name);
-//     output_file << "graph {\n";
-//     Node* curr = root;
-//     int count = 0;
-//     print_rec(curr, count);
-//     output_file << "}";
-//     output_file.close();
-//     return;
-// }
-
-// void Trie::print_rec(Node* root, int& count){
-
-//     // for(int i = 0; i < CHAR_SIZE; i++){
-//     //     if(haveChildren(root)){
-//     //         continue;
-//     //     }
-
-//     //     std::string letter = root->data;
-//     //     std::cout << "asjdhkfasdlifajsdifahsdfhaksdf" <<std::endl;
-//     //     //output_file << letter <<count << " -- "<< root->character[i + 1]<<"[Label = \" " << letter<< " \"]";
-
-//     //     count++;
-//     //     print_rec(root->character[i + 1], count);
-    
-    
-//     if (root->isLeaf) {
-        
-//     }
-    
-//     if (!haveChildren(root)) {
-//         return;
-//     }
-    
-    
-    
-//     std::cout << root->data std::endl;
-    
-    
-    
-    
-// }
+    //std::cout << root->data std::endl;
 
 
-// https://www.graphviz.org/pdf/dotguide.pdf
 
-//start at root
-//check if root has children
-//if root has children, move onto next child
-//if root does not have children, print current node connected to previous node
+
+}
+
