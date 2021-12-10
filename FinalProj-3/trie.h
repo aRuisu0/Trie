@@ -12,10 +12,11 @@ class Trie {
 
     public:
         Node* root;
+        
+        std::ofstream output_file;
+        
         //bool isLeaf;
         //int counter = 0;
-        std::ofstream output_file;
-
         //Trie* character[CHAR_SIZE];
 
         // Constructor
@@ -25,7 +26,7 @@ class Trie {
         void readFile(std::string file_name);
         
         void insert(std::string data, Node* root);
-        //bool deletion(Trie const* current, std::string data);
+        //bool deletion(Node* current, std::string data);
         
         bool search(std::string data, Node* root);
         
