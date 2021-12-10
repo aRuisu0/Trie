@@ -106,3 +106,8 @@ Found: <string in trie containing prefix>
 ```
 
 A DOT file will be produced because of the output stream from print functions.
+
+## 4. GUI (Optional)
+
+The expected GUI expected to have completed or not should be a simple program that autocompletes and predicts words in collection and display if there are repeats:
+
