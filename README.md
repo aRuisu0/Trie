@@ -5,7 +5,7 @@
   The goal of this project was to show that our group was able to competently, research, implement and present a new data structure on our own.
   
   
-  <img src="trie.jpg" width="500"/>
+  <img src="trie.png" width="500"/>
 
  ## 2. Trie Operations
  All functions and operations within the trie class are all based off of a single blank root node where all unique characters following in the data set are subsequently connected to form individual paths of strings.
