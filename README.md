@@ -109,7 +109,7 @@ A DOT file will be produced because of the output stream from print functions.
 
 ## 4. GUI (Optional)
 
-The expected GUI expected to have completed or not should be a simple program that autocompletes and predicts words in collection and display if there are repeats:
+The expected GUI to be simple model of autocomplete and repetition of words in dictionary:
 <img src="GUI.png" width="500"/>
 <img src="GUIREP.png" width="500"/>
 
